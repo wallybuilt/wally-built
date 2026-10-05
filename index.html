@@ -949,6 +949,8 @@
     .header-call:focus-visible { background: var(--orange-strong); border-color: var(--orange-strong); color: #111; }
     .header-call:hover svg,
     .header-call:focus-visible svg { color: #111; }
+    /* TEMP 2026-10-05: phone hidden while he collects site feedback via story — delete this rule to restore the number */
+    .header-call { display: none !important; }
     .floating-call {
       position: fixed;
       right: max(20px, env(safe-area-inset-right));
@@ -1426,7 +1428,7 @@
           <p class="contact-intro" data-en="Bring us the idea—even if it is still taking shape. We will help define it, then build it from scratch. Call or email to start the conversation." data-pt="Traga a ideia — mesmo que ela ainda esteja tomando forma. Nós ajudamos a defini-la e depois construímos tudo do zero. Ligue ou envie um e-mail para começar a conversa." data-es="Tráenos la idea, aunque todavía esté tomando forma. Te ayudaremos a definirla y luego la construiremos desde cero. Llámanos o envíanos un correo electrónico para comenzar la conversación.">Bring us the idea—even if it is still taking shape. We will help define it, then build it from scratch. Call or email to start the conversation.</p>
         </div>
         <div class="contact-list" role="list">
-          <div class="contact-row" role="listitem"><span class="contact-label" data-en="Phone" data-pt="Telefone" data-es="Teléfono">Phone</span><div class="contact-value"><a href="tel:+17815203573" target="_blank" rel="noopener">(781) 520-3573</a></div></div>
+          <div class="contact-row" role="listitem"><span class="contact-label" data-en="Phone" data-pt="Telefone" data-es="Teléfono">Phone</span><div class="contact-value"><span data-en="(Number hidden so the business WhatsApp doesn't get flooded 😅)" data-pt="(Tirei o número para que o WhatsApp da empresa não encha de mensagem 😅)" data-es="(Oculté el número para que el WhatsApp de la empresa no se llene de mensajes 😅)">(Number hidden so the business WhatsApp doesn't get flooded 😅)</span></div></div>
           <div class="contact-row" role="listitem"><span class="contact-label" data-en="Email" data-pt="E-mail" data-es="Correo electrónico">Email</span><div class="contact-value"><a href="mailto:contact@wallycarpentry.com" target="_blank" rel="noopener">contact@wallycarpentry.com</a></div></div>
           <div class="contact-row" role="listitem"><span class="contact-label">Instagram</span><div class="contact-value"><a href="https://instagram.com/wallycarpentry" target="_blank" rel="noopener noreferrer">@wallycarpentry</a></div></div>
           <div class="contact-row" role="listitem"><span class="contact-label" data-en="Hours" data-pt="Horário" data-es="Horario">Hours</span><div class="contact-value" data-en="Every day · 7:00 AM–8:00 PM" data-pt="Todos os dias · 7h–20h" data-es="Todos los días · 7:00 a. m.–8:00 p. m.">Every day · 7:00 AM–8:00 PM</div></div>
