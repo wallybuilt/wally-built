@@ -184,6 +184,12 @@
     }
     .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.32), rgba(0,0,0,.55)), linear-gradient(0deg, rgba(0,0,0,.62), transparent 52%, rgba(0,0,0,.28)); opacity: var(--hero-overlay-opacity, 1); pointer-events: none; }
     .hero-inner { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 220px 0 72px; text-align: center; transform: translate3d(0, var(--hero-content-shift, 0px), 0); opacity: var(--hero-content-opacity, 1); will-change: transform, opacity; }
+    .scroll-cue { position: absolute; left: 50%; bottom: 28px; z-index: 4; color: #D1C29B; opacity: .85; pointer-events: none; transition: opacity .45s ease; animation: cueFloat 2.4s ease-in-out infinite; }
+    .scroll-cue svg { display: block; width: 30px; height: 30px; }
+    .scroll-cue.is-hidden { opacity: 0; animation-play-state: paused; }
+    @keyframes cueFloat { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 9px); } }
+    @media (max-width: 620px) { .scroll-cue { bottom: 22px; } }
+    @media (prefers-reduced-motion: reduce) { .scroll-cue { animation: none; } }
     .hero-feature { max-width: 820px; margin: 0 auto; }
     .hero-content { min-width: 0; }
     .license-line { display: inline-flex; align-items: center; gap: 10px; margin: 22px 0 0; color: #fff; font-weight: 700; }
@@ -1159,6 +1165,7 @@
           </div>
         </div>
       </div>
+      <div class="scroll-cue" role="img" aria-label="Scroll"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9.5l7 7 7-7"/><path d="M5 14.5l7 7 7-7" opacity=".45"/></svg></div>
     </section>
     </div>
 
@@ -1396,6 +1403,7 @@
       var credentialBand = document.querySelector('.credential-band');
       var heroStage = document.querySelector('.hero-scroll-stage');
       var hero = document.querySelector('.hero');
+      var scrollCue = document.querySelector('.scroll-cue');
       var heroSlides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
       var activeHeroSlide = 0;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1497,6 +1505,7 @@
         var footerVisible = siteFooter && siteFooter.getBoundingClientRect().top < window.innerHeight;
         var showFloatingCall = callReady && !footerVisible;
         siteHeader.classList.toggle('is-condensed', scrolled);
+        if (scrollCue) scrollCue.classList.toggle('is-hidden', scrollTop > 80);
         floatingCall.classList.toggle('is-visible', showFloatingCall);
         floatingCall.setAttribute('aria-hidden', String(!showFloatingCall));
         floatingCall.setAttribute('tabindex', showFloatingCall ? '0' : '-1');
