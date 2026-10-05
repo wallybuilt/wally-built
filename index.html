@@ -1559,8 +1559,11 @@
         function smooth01(p) { p = clamp(p, 0, 1); return p * p * (3 - 2 * p); }
         /* Single-W choreography. #w-single is the ONE W: fixed, always
            opacity 1, always clickable. At scroll 0 it stands in for the
-           lockup W (pixel-aligned). The wordmark + slogan fade 1→0 over
-           0→90px. The W glue-follows the scroll (locked to the lockup, so
+           lockup W (pixel-aligned). The wordmark + slogan HOLD at full
+           opacity until 160px of scroll, then ease 1→0 over 160→340px.
+           (The hero is sticky, so the wordmark is viewport-stationary and
+           never approaches the docked W while visible; the fade completes
+           ~60px of scroll before any geometric contact.) The W glue-follows the scroll (locked to the lockup, so
            the W-wordmark gap never changes and they cannot overlap), then
            eases into a dock at the header spot and stays there forever.
            NOTE on the requested formula: translateY(s) = -s +
@@ -1572,7 +1575,7 @@
            spot: strictly upward, never off-screen, never overlapping text.
            Every value is a pure function of scrollTop, so scrolling back
            reverses everything automatically. */
-        var wordmarkFade = smooth01(scrollTop / 90);
+        var wordmarkFade = smooth01((scrollTop - 160) / 180);
         if (heroWordmark) {
           heroWordmark.style.setProperty('--hero-wordmark-opacity', (1 - wordmarkFade).toFixed(3));
           heroWordmark.style.setProperty('--hero-wordmark-shift', '0px');
