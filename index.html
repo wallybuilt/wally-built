@@ -176,7 +176,7 @@
       to { transform: translate3d(0, var(--hero-image-shift, 0%), 0) scale(calc(var(--hero-image-scale, 1) + .22)); }
     }
     .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.32), rgba(0,0,0,.55)), linear-gradient(0deg, rgba(0,0,0,.62), transparent 52%, rgba(0,0,0,.28)); opacity: var(--hero-overlay-opacity, 1); pointer-events: none; }
-    .hero-inner { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 220px 0 72px; text-align: center; transform: translate3d(0, var(--hero-content-shift, 0px), 0); opacity: var(--hero-content-opacity, 1); will-change: transform, opacity; }
+    .hero-inner { position: relative; z-index: 1; width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 220px 0 72px; text-align: center; transform: translate3d(0, var(--hero-content-shift, 0px), 0); opacity: var(--hero-content-opacity, 1); will-change: transform, opacity; }
     .scroll-cue { position: absolute; left: 50%; bottom: 56px; z-index: 4; color: #D1C29B; opacity: .85; pointer-events: none; transition: opacity .45s ease; animation: cueFloat 2.4s ease-in-out infinite; }
     .scroll-cue svg { display: block; width: 30px; height: 30px; }
     .scroll-cue.is-hidden { opacity: 0; animation-play-state: paused; }
